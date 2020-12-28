@@ -23,7 +23,7 @@ const Boton = styled.input`
     }
 `
 
-const Formulario = () => {
+const Formulario = ({ guardarMoneda ,guardarCriptomoneda }) => {
 
     // state del listado de criptomonedas
 
@@ -76,13 +76,17 @@ const Formulario = () => {
         // pasar los datos al componente principal
 
         setError(false);
+
+        guardarMoneda(moneda);
+        guardarCriptomoneda(criptomoneda);
     }
 
     return ( 
         <form
             onSubmit = {cotizarMoneda}
         >
-            { error ? <Error mensaje ="Todos los campos son obligatorios"/> : null }
+            { error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
+            
             <SelectMonedas />
             <SelectCripto/>
             <Boton
